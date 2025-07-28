@@ -1,0 +1,18 @@
+{
+  // "extends": "@mass-master/tsconfig/base.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strictPropertyInitialization": false,
+    "isolatedModules": false,
+    "outDir": "dist",
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "noEmit": false
+  },
+  "exclude": ["node_modules", "dist"]
+}

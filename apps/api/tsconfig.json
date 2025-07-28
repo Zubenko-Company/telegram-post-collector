@@ -1,0 +1,25 @@
+{
+  "extends": "@mass-master/tsconfig/base.json",
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "isolatedModules": false,
+    "outDir": "dist",
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

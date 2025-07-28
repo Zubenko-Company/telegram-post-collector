@@ -1,0 +1,37 @@
+{
+  "name": "@mass-master/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "superjson": "2.2.1",
+    "typeorm": "0.3.17",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@mass-master/eslint-config": "workspace:*",
+    "@mass-master/prettier-config": "workspace:*",
+    "@mass-master/tsconfig": "workspace:*",
+    "@types/node": "^20.12.12",
+    "@types/pg": "^8.11.10",
+    "eslint": "^9.2.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@mass-master/prettier-config"
+}
