@@ -32,4 +32,21 @@ export class Config {
     return process.env.PHONE_NUMBER;
   }
 
+  static get CHANNEL_COLLECTOR(): string {
+    if (!process.env.CHANNEL_COLLECTOR) {
+      throw new Error(getErrorEnvMessage("CHANNEL_COLLECTOR"));
+    }
+
+    return process.env.CHANNEL_COLLECTOR;
+  }
+
+  static get CHANNELS(): string[] {
+    if (!process.env.CHANNELS) {
+      throw new Error(getErrorEnvMessage("CHANNELS"));
+    }
+
+    const channels = JSON.parse(process.env.CHANNELS || '[]') as string[];
+
+    return channels;
+  }
 }

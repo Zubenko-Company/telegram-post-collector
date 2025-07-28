@@ -3,7 +3,6 @@ import { StringSession } from "telegram/sessions/index.js";
 import * as readline from "readline";
 import { Config } from '@mass-master/config'
 import { NewMessage, NewMessageEvent } from "telegram/events/NewMessage.js";
-import { CHANNELS } from "./constants/channels.js";
 
 
 const API_ID = Config.API_ID; // Replace with your API ID
@@ -16,6 +15,7 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
+
 
 const client = new TelegramClient(SESSION, API_ID, API_HASH, {
     connectionRetries: 5,
@@ -37,23 +37,24 @@ const client = new TelegramClient(SESSION, API_ID, API_HASH, {
         onError: (err) => console.error(err),
     });
 
-    const mainChannel = await client.getEntity('Vovosti_news');
+    const mainChannel = await client.getEntity(Config.CHANNEL_COLLECTOR);
 
 
     console.log("Fetching channel posts...");
 
+    try {
+        const handler = (event: NewMessageEvent) => {
+            const message = event.message
 
-    const handler = (event: NewMessageEvent) => {
-        const message = event.message
+            message.forwardTo(mainChannel)
+        };
 
-        message.forwardTo(mainChannel)
-    };
+        client.addEventHandler(handler, new NewMessage({ chats: Config.CHANNELS }));
 
-
-    client.addEventHandler(handler, new NewMessage({ chats: CHANNELS }));
+    } catch (e) {
+        console.log(e);
+    }
 })();
-
-
 
 ['SIGINT', 'SIGTERM'].forEach(signal => {
     process.on(signal, async () => {
