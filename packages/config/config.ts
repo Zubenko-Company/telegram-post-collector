@@ -44,8 +44,9 @@ export class Config {
     if (!process.env.CHANNELS) {
       throw new Error(getErrorEnvMessage("CHANNELS"));
     }
+    const rowChannels = process.env.CHANNELS.replace(/\\/g, '');
 
-    const channels = JSON.parse(process.env.CHANNELS || '[]') as string[];
+    const channels = JSON.parse(rowChannels || '[]') as string[];
 
     return channels;
   }
